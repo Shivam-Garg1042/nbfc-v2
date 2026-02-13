@@ -1,0 +1,416 @@
+.container2 {
+    border-radius: 10px;
+    background: #FFF;
+    /* min-height: 100vh; */
+    padding: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* color: #333; */
+  }
+  
+  .container2 .dashboard {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Header style */
+  .container2 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 12px;
+  }
+
+  /* Search container */
+  .container2 .search-container {
+    flex: 1;
+    max-width: 250px;
+  }
+
+  .container2 .search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+  }
+
+  .container2 .search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .container2 .search-input::placeholder {
+    color: #9ca3af;
+  }
+
+  /* Checkbox filter styles */
+  .checkbox-filter-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 16px;
+  }
+
+  .checkbox-filter-input {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .checkbox-filter-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+    transition: color 0.15s ease;
+  }
+
+  .checkbox-filter-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    transition: all 0.15s ease;
+    background-color: #ffffff;
+  }
+
+  .checkbox-filter-custom::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .checkbox-filter-input:checked + .checkbox-filter-label .checkbox-filter-custom {
+    background-color: #22c55e;
+    border-color: #22c55e;
+  }
+
+  .checkbox-filter-input:checked + .checkbox-filter-label .checkbox-filter-custom::after {
+    opacity: 1;
+  }
+
+  .checkbox-filter-wrapper:hover .checkbox-filter-custom {
+    border-color: #22c55e;
+  }
+
+  .checkbox-filter-wrapper:hover .checkbox-filter-label {
+    color: #22c55e;
+  }
+  
+  .container2 .title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .container2 .actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .container2 .action-button {
+    padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #6b7280;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  white-space: nowrap;
+  
+  }
+  
+  .container2 .action-button:hover {
+    border-color: #d1d5db;
+    background: #f9fafb;
+  }
+
+  .container2 .action-button.active {
+    background: #35BC37;
+    color: white;
+    border-color: #35BC37;
+  }
+  
+  /* Table style */
+  .container2 .table-container2 {
+    overflow-x: auto;
+    border-radius: 4px;
+  }
+  
+  .container2 table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .container2 thead tr {
+    background-color: #E8F5ED;
+    
+    border-bottom: 1px solid #e5e7eb;
+    
+  }
+  
+  .container2 th {
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 500;
+    color: #666;
+  }
+
+  .container2 td {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .container2 td:first-child {
+    text-align: left;
+  }
+
+  .container2 .driver-row-clickable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .container2 .driver-row-clickable:hover {
+    background-color: #f0f9ff;
+  }  /* Checkbox style */
+  .container2 .checkbox-wrapper {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
+  
+  .container2 .checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .container2 .checkbox-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .container2 .checkbox:checked ~ .checkbox-label {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+  
+  .container2 .checkbox-label:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .container2 .checkbox:checked ~ .checkbox-label:after {
+    display: block;
+  }
+  
+  /* Driver details */
+  .container2 .driver-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .container2 .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .container2 .driver-info .name {
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  
+  .container2 .driver-info .details {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  /* Karma Score */
+  .container2 .karma-container2 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container2 .karma-score {
+    position: absolute;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  /* Run Kms */
+  .container2 .km-value {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  
+  .container2 .km-label {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  .container2 .total-km {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  /* Repayment status */
+  .container2 .status-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  
+  .container2 .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .container2 .prompt-payer {
+    color: #4CAF50;
+  }
+  
+  .container2 .defaulter {
+    color: #FF5252;
+  }
+  
+  .container2 .status-details {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  /* Interest gained */
+  .container2 .interest-value {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  
+  .container2 .outstanding {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  /* Status badge */
+  .container2 .status-badge {
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  
+  .container2 .active-badge {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+  }
+  
+  .container2 .demobilized-badge {
+    background-color: rgba(255, 82, 82, 0.1);
+    color: #FF5252;
+  }
+  
+  /* Pagination */
+  .container2 .pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+    padding-right: 20px;
+  }
+  
+  .container2 .page-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .container2 .page-button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+  
+  .container2 .page-button:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .container2 .page-button.active {
+    background-color: #47B174;
+    color: white;
+    border-color: #47B174;
+  }
+  
+  .container2 .nav-button {
+    font-weight: bold;
+  }
+
+  /* Tachometer icon container */
+  .container2 .tachometer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+  }

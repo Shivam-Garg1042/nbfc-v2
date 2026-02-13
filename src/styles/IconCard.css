@@ -1,0 +1,82 @@
+.icon-card-main-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 10px;
+    margin-left: 16px;
+    padding: 15px 15px 8px 26px;
+}
+
+.concentric-chart-container {
+    /* background-color: #fff; */
+    /* border-radius: 15px; */
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+    /* padding: px; */
+    /* min-width: 320px;     */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: fit-content;
+}
+.card-container .child{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    gap: 12px;
+    width: 130px;
+    height: 140px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 16px 15px 16px 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.card-container .child .logo{
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 134px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+.card-container .child .info{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.card-container .child .info h3{
+    color: #416678;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    text-align: center;
+}
+.card-container .child .info h4{
+    color: #808080;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.14px;
+    margin: 0;
+    text-align: center;
+}

@@ -1,0 +1,4 @@
+.filter-container .filters-header{
+    display: flex;
+    justify-content: space-between;
+}

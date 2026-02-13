@@ -1,0 +1,55 @@
+.karma-chart-container {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .karma-chart-container .karma-chart-circle {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .karma-chart-container .karma-chart-background {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 6;
+  }
+  
+  .karma-chart-container .karma-chart-progress {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s ease;
+  }
+  
+  .karma-chart-container .karma-chart-score {
+    position: absolute;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  /* Define colors for different score ranges - Project Design Colors */
+  .karma-chart-container .karma-score-high {
+    stroke: #23BC64; /* Green - matches earnings color */
+    color: #23BC64;
+  }
+  
+  .karma-chart-container .karma-score-medium {
+    stroke: #1eca66; /* Green - low risk is good */
+    color: #1eca66    ;
+  }
+  .karma-chart-container .karma-score-medium2 {
+    stroke: #FFD700; /* Yellow - medium risk */
+    color: #FFD700;
+  }
+   .karma-chart-container .karma-score-medium3 {
+    stroke: #FF901A; /* Orange - matches project orange */
+    color: #FF901A;
+  }
+  .karma-chart-container .karma-score-low {
+    stroke: #EF4444; /* Red - high risk */
+    color: #EF4444;
+  }

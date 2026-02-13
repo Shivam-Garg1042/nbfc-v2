@@ -1,0 +1,10 @@
+.bundle{
+    position: relative;
+    left: 40px;
+    top: 10%;
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: space-between;
+    /* gap: 34.5866666667px; */
+    
+}

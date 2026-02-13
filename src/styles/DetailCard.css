@@ -1,0 +1,226 @@
+.main {
+    padding: 20px;
+    /* max-width: 1200px; */
+    /* max-width: calc(100% - 45px); */
+    /* max-width: 95%; */
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-left: 40px;
+   
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #FFF;
+}
+
+.contain {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .contain {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.firstflex {
+    display: flex;
+    padding-bottom: 0px;
+    flex-wrap: wrap;
+}
+
+.firstflex img {
+    width: 100px;
+    height: 80px;
+    flex-shrink: 0;
+    padding: 10px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.user-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #F3F4F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.firstflex .child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0
+}
+
+.firstflex .child .line {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.firstflex .child .line h3 {
+    color: #03354E;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    margin: 0;
+}
+
+.firstflex .child .line .stock {
+    color: #181818;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+}
+
+.firstflex .child .line .favourites {
+    color: #FA7501;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    margin: 0;
+}
+
+.firstflex .child .info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.firstflex .child .info .children {
+    border-radius: 25px;
+    background: #F6F6F6;
+    padding: 5px 20px;
+    white-space: nowrap;
+}
+
+.flex-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.flex-parent .secondflex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.flex-parent .secondflex .child {
+    display: flex;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.flex-parent .child2 {
+    border-radius: 30px;
+    background: #F0FFEE;
+    color: #119549;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px 20px;
+    margin-top: 10px;
+}
+
+.difference {
+    height: 0.6px;
+    margin: 20px 40px 0;
+    background: #CECECE;
+}
+
+.bottom-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bottom-card .left {
+    flex: 1;
+    min-width: 200px;
+}
+
+.bottom-card .left h5 {
+    color: #818181;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 22px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.bottom-card .left p {
+    color: #818181;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+}
+
+.bottom-card .right {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 8px;
+}
+
+.bottom-card .right .verticalLine {
+    width: 0.6px;
+    height: 30px;
+    background: #CECECE;
+}
+
+.social-icons {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.social-icons > * {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons > *:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}

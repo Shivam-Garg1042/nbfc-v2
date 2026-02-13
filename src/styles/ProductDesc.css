@@ -1,0 +1,160 @@
+.product-top-card{
+    border-radius: 10px;
+    background: #FFF;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 60px;
+    margin-right: 4px;
+}
+.product-top-card-actionable{
+    border-radius: 10px;
+    background: #FFF;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    margin-left: 1px;
+    margin-right: 4px;
+}
+
+.top-card{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 50px 2px 50px;
+}
+.top-card .firstflex{
+    display: flex;
+    padding: 0.5rem;
+    padding-bottom: 0px;
+}
+.top-card .firstflex img{
+    width: 100px;
+    height: 80px;
+    flex-shrink: 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.top-card .firstflex .child{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.top-card .firstflex .child h3{
+    color: #383838;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.top-card .firstflex .child .line{
+    display: flex;
+    align-items: baseline;
+}
+.top-card .firstflex .child .line h3{
+    color: #03354E;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.28px;
+}
+.top-card .firstflex .child .line .unit{
+    color: #03354E;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.15px;
+}
+.top-card .firstflex .child .line .stock{
+    color: #3AB86D;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 0.9rem;
+    padding-right: 1rem;
+}
+.top-card .secondflex{
+    display: flex;
+    gap: 40px;
+}
+
+.difference{
+    height: 0.6px;
+    margin-left: 40px;
+    margin-right: 40px;
+    background: #CECECE;
+}
+.bottom-card{
+    padding: 20px 50px 20px 50px;
+}
+.bottom-card .stats-container {
+    display: flex;
+    align-items: center;
+   
+    gap: 120px;
+    width: 100%;
+  }
+  .bottom-card .stats-container-actionable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+  }
+  .bottom-card .stats-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .bottom-card .text-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bottom-card .label {
+    font-size: 14px;
+    color: #6B7280;
+    font-weight: normal;
+  }
+  
+  .bottom-card .value {
+    font-size: 20px;
+    color: #334155;
+    font-weight: 500;
+  }
+  
+  .bottom-card .icon-container {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* Background colors for each icon */
+  .bottom-card .green {
+    background-color: #EDFFF5;
+  }
+  
+  .bottom-card .blue {
+    background-color: #EFF6FF;
+  }
+  
+  .bottom-card .blue-light {
+    background-color: #EFF6FF;
+  }
+  
+  .bottom-card .yellow {
+    background-color: #FEF3C7;
+  }
+  
+  .bottom-card .red {
+    background-color: #FEE2E2;
+  }

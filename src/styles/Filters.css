@@ -1,0 +1,21 @@
+.filter{
+    display: inline-flex;
+    position: relative;
+    top: 19px;
+    left: 40px;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 96.77%; */
+    width: calc(100% - 40px);
+}
+.filter .month{
+    border-radius: 7px;
+    border: 1px solid #E4E4E4;
+    background: #FFF;
+    stroke-width: 1px;
+    stroke: #03354E;
+}
+.filter .datePicker{
+    margin-left: auto;
+    margin-right: 25px;
+}

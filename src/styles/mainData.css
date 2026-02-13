@@ -1,0 +1,50 @@
+.bundleCards{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 1039.4533333334px;
+    /* gap: 45.83px; */
+    /* row-gap: 35px; */
+    /* column-gap: 35px; */
+    column-gap: 30.5866666667px;
+    row-gap: 30.5866666667px;
+    position : relative;
+    left : 24px
+}
+.bundleCards .shortCard{
+    width: 510px;
+    /* width: auto; */
+    /* width: 80%; */
+    height: auto;
+    /* height: 44.922%; */
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+}
+.bundleCards .longCard{
+    grid-column-start: 1;
+    grid-column-end: -1;
+    width: auto;
+    /* height: 345px; */
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+}
+.bundleCards .manage{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.bundleCards .manage h3{
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.bundleCards .manage .alignRight{
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+}

@@ -1,0 +1,30 @@
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+
+const ProtectedRoute = ({ children, requiredRole = null }) => {
+  const { user, loading } = useAuth();
+
+  
+
+  if (loading) {
+    // console.log('⏳ Still loading auth...');
+    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
+  }
+
+  if (!user) {
+    // console.log('🚫 No user found, redirecting to login');
+    return <Navigate to="/login" replace />;
+  }
+
+  // Role-based access control
+  if (requiredRole && user.role !== requiredRole) {
+    // console.log('⛔ Role mismatch, redirecting to unauthorized');
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+ 
+  return children;
+};
+
+export default ProtectedRoute;

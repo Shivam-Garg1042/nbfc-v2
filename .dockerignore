@@ -1,0 +1,35 @@
+# Node modules and dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+dist
+
+# Logs
+logs
+*.log
+
+# Env files (keep .env for build-time variables)
+# .env is needed for Vite to read VITE_* variables during build
+.env.local
+.env.*.local
+
+# Git
+.git
+.gitignore
+
+# Docker-related
+Dockerfile*
+.dockerignore
+
+# OS/Editor-specific
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Tests and coverage
+coverage
+*.test.js
+__tests__/

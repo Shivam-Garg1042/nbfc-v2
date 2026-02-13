@@ -1,0 +1,456 @@
+
+
+/* Card Titles */
+.card-title {
+  color: #8B8B8B;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+  letter-spacing: 0.5px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+.card-title.white {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Dashboard Overview Styles */
+.dashboard-overview {
+  padding: 96px 40px 24px 80px;
+  background: #f8fafc;
+  min-height: 100vh;
+  height: auto;
+}
+
+.dashboard-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  /* grid-template-rows: 1fr 1fr;    */
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: stretch;
+}
+.dashboard-main2-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 0.8fr;
+  /* grid-template-rows: 1fr 1fr; */
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: stretch;
+}
+
+/* Card Base Styles */
+.overview-card,
+.trends-card
+ {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 20px 0px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-bottom: 0;
+}
+.emi-trends-card
+ {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 20px 0px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap:10px;
+  margin-bottom: 0;
+}
+.nps-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 20px 0px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap:38px;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.risk-card,
+.karma-card {
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.risk-card {
+  background: linear-gradient(135deg, #0a2e3f 60%, #0e4661 100%);
+}
+
+.karma-card {
+  background: linear-gradient(135deg, #0d6f36 60%, #228024 100%);
+}
+
+/* Card Titles */
+.card-title {
+  color: #818181;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.card-title.white {
+  color: white;
+  font-size: 18px;
+}
+
+/* Driver Overview Card */
+.overview-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-item {
+  border-radius: 10px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-orange {
+  background: #fccece;
+}
+
+.stat-yellow {
+  background: #fbefad;
+}
+
+.stat-green {
+  background: #c9f9d9;
+}
+
+.stat-icon {
+  flex-shrink: 0;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-number {
+  color: inherit;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 0 0 2px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.stat-orange .stat-number {
+  color: #FA7501;
+}
+
+.stat-yellow .stat-number {
+  color: #FFD105;
+}
+
+.stat-green .stat-number {
+  color: #119549;
+}
+
+.stat-label {
+  color: #818181;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Matrix Cards */
+.risk-matrix,
+.karma-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.matrix-header {
+  display: grid;
+  grid-template-columns: 110px 1fr 1fr 1fr;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.matrix-header span:first-child {
+  opacity: 0;
+}
+
+.header-high {
+  color: #07f15c;
+  text-align: center;
+}
+
+.header-medium {
+  color: #FFD465;
+  text-align: center;
+}
+
+.header-low {
+  color: #FA7501;
+  text-align: center;
+}
+
+.matrix-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.matrix-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.risk-label,
+.karma-label {
+  font-size: 13px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  text-align: center;
+  /* margin-left: 24px; */
+}
+
+.low-risk,
+.high-karma {
+  color: #07f15c;
+  
+
+}
+
+.medium-risk,
+.medium-karma {
+  color: #FFD465;
+}
+
+.high-risk,
+.low-karma {
+  color: #FA7501;
+}
+
+.matrix-value {
+  background: white;
+  color: #181818;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Chart Styles */
+.chart-container {
+  margin-top: 4px;
+  height: 180px;
+  
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.legend-text {
+  font-size: 12px;
+  color: #818181;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Pie Chart */
+.pie-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pie-legend {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pie-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pie-legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.pie-legend-text {
+  font-size: 12px;
+  color: #818181;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* NPS Chart */
+.nps-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+ 
+}
+
+.nps-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  height: 200px;
+  margin-bottom: 8px;
+}
+
+.nps-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.nps-bar {
+  width: 32px;
+  border-radius: 8px 8px 4px 4px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nps-percentage {
+  font-weight: 600;
+  color: white;
+  font-size: 11px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.nps-emoji {
+  font-size: 22px;
+}
+
+.nps-scale {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.scale-label {
+  font-size: 11px;
+  color: #818181;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .dashboard-main-grid {
+    grid-template-columns: 260px 1fr 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .dashboard-main-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+  
+  .left-column {
+    grid-row: auto;
+  }
+  
+  .top-right-section {
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .bottom-charts-section {
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-overview {
+    padding: 12px;
+  }
+  
+  .dashboard-main-grid {
+    gap: 12px;
+  }
+  
+  .top-right-section,
+  .bottom-charts-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .overview-card,
+  .risk-card,
+  .karma-card,
+  .trends-card,
+  .emi-trends-card,
+  .nps-card {
+    padding: 14px;
+  }
+}

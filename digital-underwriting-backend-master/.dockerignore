@@ -1,0 +1,20 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore env files (will be set in Cloud Run)
+.env
+.env.local
+
+# Ignore logs
+*.log
+
+# Ignore Git
+.git
+.gitignore
+
+# Ignore README
+README.md
+
+# Ignore Docker files
+Dockerfile
+.dockerignore

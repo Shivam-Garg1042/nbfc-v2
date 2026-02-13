@@ -1,0 +1,189 @@
+.nav {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid var(--Stroke, #E8E8E8);
+    background: #FFF;
+    display: flex;
+    align-items: center;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+.clubbed{
+    display: inline-flex;
+    justify-content: flex-start;
+    position: relative;
+    left: 2;
+    gap: 40px;
+    padding: 3%;
+}
+.logo{
+    width: 150px;
+    height: 45px;
+}
+.text {
+    color: #000;
+    font-family: "Helvetica";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 4%;
+}
+.wrapper{
+    display: inline-flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-left: auto;
+    right: 0;
+    align-items: center;
+    gap: 20px;
+}
+
+/* NBFC Filter Styles */
+.nbfc-filter-navbar {
+    position: relative;
+    display: inline-block;
+}
+
+.nbfc-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.2s ease;
+    min-width: 140px;
+    justify-content: space-between;
+}
+
+.nbfc-filter-btn:hover {
+    background: #f8f9fa;
+    border-color: #119549;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-icon {
+    font-size: 16px;
+    color: #119549;
+}
+
+.filter-text {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filter-arrow {
+    font-size: 12px;
+    color: #666;
+    transition: transform 0.2s ease;
+}
+
+.filter-arrow.open {
+    transform: rotate(180deg);
+}
+
+.nbfc-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.nbfc-option {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    background: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.nbfc-option:hover {
+    background: #f8f9fa;
+}
+
+.nbfc-option.active {
+    background: #119549;
+    color: white;
+}
+
+.nbfc-option.active:hover {
+    background: #0d7a3c;
+}
+
+/* NBFC Logo Display for NBFC users */
+.nbfc-logo-display {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: 0px 4px; 
+}
+
+.nbfc-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.icon{
+    width: 21.919px;
+    height: 27.039px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+.mega {
+    display: inline-flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 20px;
+}
+.img2{
+    width: 22.462px;
+    height: 21.512px;
+    flex-shrink: 0;
+    padding: 2%;
+}
+.meg{
+    color: #119549;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.corp{
+    color: #03354E;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
