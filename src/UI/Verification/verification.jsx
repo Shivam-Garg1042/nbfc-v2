@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import ApiService from '../../services/api';
 import { useAuth } from '../../contexts/AuthContext';
 import '../../styles/verification.css';
@@ -7,6 +7,9 @@ import '../../styles/verification.css';
 function Verification() {
   const navigate = useNavigate();
   const { user, isAdmin } = useAuth();
+  if (user?.verificationAccess === false) {
+    return <Navigate to="/unauthorized" replace />;
+  }
   const actionLabels = {
     risk: 'Risk verification',
     vehicle: 'Vehicle verification',

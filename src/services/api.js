@@ -283,6 +283,18 @@ class ApiService {
     });
   }
 
+  // User Management APIs
+  getUsers() {
+    return this.request('/api/user/list');
+  }
+
+  createUser(payload) {
+    return this.request('/api/user/create', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  }
+
 }
 
 export default new ApiService();

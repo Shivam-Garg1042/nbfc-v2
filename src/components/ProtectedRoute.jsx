@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-const ProtectedRoute = ({ children, requiredRole = null }) => {
+const ProtectedRoute = ({ children, requiredRole = null, requiredRoles = null }) => {
   const { user, loading } = useAuth();
 
   
@@ -18,8 +18,11 @@ const ProtectedRoute = ({ children, requiredRole = null }) => {
   }
 
   // Role-based access control
-  if (requiredRole && user.role !== requiredRole) {
-    // console.log('⛔ Role mismatch, redirecting to unauthorized');
+  if (Array.isArray(requiredRoles) && requiredRoles.length > 0) {
+    if (!requiredRoles.includes(user.role)) {
+      return <Navigate to="/unauthorized" replace />;
+    }
+  } else if (requiredRole && user.role !== requiredRole) {
     return <Navigate to="/unauthorized" replace />;
   }
 

@@ -10,9 +10,14 @@ import Verification from './UI/Verification/verification.jsx'
 import VehicleDetails from './UI/Verification/VehicleDetails'
 import RiskDetails from './UI/Verification/RiskDetails'
 import CreditDetails from './UI/Verification/CreditDetails'
+import MyProfile from './UI/Users/MyProfile'
+import AllUsers from './UI/Users/AllUsers'
+import CreateUser from './UI/Users/CreateUser'
+import UserMapping from './UI/Users/UserMapping'
 // import RiskDetails from './UI/Verification/RiskDetails'
 import Login from './components/Login'
 import ProtectedRoute from './components/ProtectedRoute'
+import Unauthorized from './components/Unauthorized'
 import { AuthProvider } from './contexts/AuthContext'
 import { NbfcFilterProvider } from './UI/NBFCFilter/NbfcFilterContext'
 
@@ -134,6 +139,56 @@ function App() {
               <CreditDetailsPage />
             </ProtectedRoute>
           } />
+
+          <Route path='/users/myProfile' element={
+            <ProtectedRoute>
+              <NbfcFilterProvider initial="all">
+                <div className="app-layout">
+                  <Navbar />
+                  <SideNav />
+                  <MyProfile />
+                </div>
+              </NbfcFilterProvider>
+            </ProtectedRoute>
+          } />
+
+          <Route path='/users/allUsers' element={
+            <ProtectedRoute requiredRoles={['admin', 'nbfc']}>
+              <NbfcFilterProvider initial="all">
+                <div className="app-layout">
+                  <Navbar />
+                  <SideNav />
+                  <AllUsers />
+                </div>
+              </NbfcFilterProvider>
+            </ProtectedRoute>
+          } />
+
+          <Route path='/users/createUser' element={
+            <ProtectedRoute requiredRoles={['admin', 'nbfc']}>
+              <NbfcFilterProvider initial="all">
+                <div className="app-layout">
+                  <Navbar />
+                  <SideNav />
+                  <CreateUser />
+                </div>
+              </NbfcFilterProvider>
+            </ProtectedRoute>
+          } />
+
+          <Route path='/users/:userId/mapping' element={
+            <ProtectedRoute requiredRoles={['admin', 'nbfc']}>
+              <NbfcFilterProvider initial="all">
+                <div className="app-layout">
+                  <Navbar />
+                  <SideNav />
+                  <UserMapping />
+                </div>
+              </NbfcFilterProvider>
+            </ProtectedRoute>
+          } />
+
+          <Route path='/unauthorized' element={<Unauthorized />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

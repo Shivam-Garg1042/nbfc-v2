@@ -3,6 +3,7 @@ import './../styles/sideNav.css'
 import { CgProfile } from "react-icons/cg";
 import { useAuth } from '../contexts/AuthContext';
 import { useNbfcFilter } from './NBFCFilter/NbfcFilterContext';
+import { useLocation } from 'react-router-dom';
 import Dashboard from '../svg/Dashboard';
 import Home from '../svg/Home';
 import DriverAnalytics from '../svg/DriverAnalytics';
@@ -10,6 +11,10 @@ import ActionableInsights from '../svg/ActionableInsights';
 import Favorites from '../svg/Favorites';
 import chargeupLogo from '/images/Chargeup Logo_white jpg.jpg'
 import { MdOutlineVerified } from "react-icons/md";
+import { FaUsers } from "react-icons/fa";
+import { IoMdArrowBack } from "react-icons/io";
+import { FaUser } from "react-icons/fa6";
+import { IoLogOutOutline } from "react-icons/io5";
 
 
 function sideNav() {
@@ -19,6 +24,10 @@ function sideNav() {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const { user, logout } = useAuth();
     const { selectedNbfc } = useNbfcFilter();
+    const location = useLocation();
+    const isUsersSection = location.pathname.startsWith('/users');
+    const canManageUsers = user?.role !== 'employee';
+    const canViewVerification = user?.verificationAccess !== false;
 
     // Helper function to determine if Home and Verification should be shown
     const shouldShowAllNbfcTabs = () => {
@@ -50,7 +59,6 @@ function sideNav() {
 
     const handleLogoutClick = () => {
         setShowLogoutModal(true);
-        setShowProfileDropdown(false);
     }
 
     const confirmLogout = async () => {
@@ -65,14 +73,16 @@ function sideNav() {
         <>
             <div id="mySidenav" className="sidenav" onMouseEnter={openNav} onMouseLeave={closeNav} style={{ width: navWidth, paddingRight: rightPadding }}>
                 {/* <a href="javascript:void(0)" className="closebtn" onMouseEnter={closeNav}>&times;</a> */}
-                <div className="profile" onClick={toggleProfileDropdown}>
-                    <CgProfile style={{width: '24px', height: '24px'}}/>
-                    <p>Profile</p>
-                    <span style={{ marginLeft: 'auto', fontSize: '12px' }}>▼</span>
-                </div>
+                {!isUsersSection && (
+                    <div className="profile" onClick={toggleProfileDropdown}>
+                        <CgProfile style={{width: '24px', height: '24px'}}/>
+                        <p>Profile</p>
+                        <span style={{ marginLeft: 'auto', fontSize: '12px' }}>▼</span>
+                    </div>
+                )}
                 
                 {/* Profile Dropdown */}
-                {showProfileDropdown && navWidth === "256px" && (
+                {!isUsersSection && showProfileDropdown && navWidth === "256px" && (
                     <div className="profile-dropdown">
                         <div className="dropdown-item organization">
                             {user?.organization || 'ChargeUp'}
@@ -82,59 +92,92 @@ function sideNav() {
                         </div>
                     </div>
                 )}
-                {shouldShowAllNbfcTabs() && (
-                    <a href="/">
-                        <div className="wrapping">
-                            <Home/>
-                            <p>Home</p>
+                {isUsersSection ? (
+                    <>
+                        <a href="/users/myProfile">
+                            <div className="wrapping">
+                                <CgProfile style={{width: '22px', height: '22px'}}/>
+                                <p>My Profile</p>
+                            </div>
+                        </a>
+                        {canManageUsers && (
+                            <a href="/users/allUsers">
+                                <div className="wrapping">
+                                    <FaUsers style={{width: '22px', height: '22px', color: 'inherit'}}/>
+                                    <p>All Users</p>
+                                </div>
+                            </a>
+                        )}
+                        {canManageUsers && (
+                            <a href="/users/createUser">
+                                <div className="wrapping">
+                                    <FaUser style={{width: '22px', height: '18px', color: 'inherit'}}/>
+                                    <p>Create User</p>
+                                </div>
+                            </a>
+                        )}
+                        <a href={canViewVerification ? "/verification" : "/home"}>
+                            <div className="wrapping">
+                                <IoMdArrowBack style={{width: '22px', height: '22px', color: 'inherit'}}/>
+                                <p>Back</p>
+                            </div>
+                        </a>
+                        <div className="wrapping" onClick={handleLogoutClick} style={{ cursor: 'pointer' }}>
+                            <IoLogOutOutline style={{width: '22px', height: '22px'}}/>
+                            <p>Logout</p>
                         </div>
-                    </a>
-                )}
-                <a href="/home">
-                    <div className="wrapping">
-                        <Dashboard/>
-                        <p>Dashboard</p>
-                    </div>
-                </a>
-               
-                <a href="/productView">
-                    <div className="wrapping">
-                        <DriverAnalytics/>
-                        <p>Driver Analytics</p>
-                    </div>
-                </a>
-                <a href="/actionable">
-                    <div className="wrapping">
-                        <ActionableInsights/>
-                        <p>Actionable Insights</p>
-                    </div>
-                </a>
-                <a href="https://assets.batterypulse.echargeup.com/" target="_blank" rel="noreferrer">
-                    <div className="wrapping">
-                        <Favorites/>
-                        <p>Assets</p>
-                    </div>
-                </a>
-                
-                {/* <a href="#">
-                    <div className="wrapping">
-                        <RecoveryProgress/>
-                        <p>Favorites </p>
-                    </div>
-                </a> */}
-                {/* <a href="#">
-                    <div className="wrapping">
-                         <ReportsIcon/>
-                        <p>Reports</p>
-                    </div>
-                </a> */}
-                {shouldShowAllNbfcTabs() && (
-                    <a href="/verification" >
-                        <div className="wrapping">
-                            <MdOutlineVerified style={{width: '24px', height: '24px', color: 'inherit'}}/>
-                            <p>Verification</p>
-                        </div>
-                    </a>
+                    </>
+                ) : (
+                    <>
+                        {shouldShowAllNbfcTabs() && (
+                            <a href="/">
+                                <div className="wrapping">
+                                    <Home/>
+                                    <p>Home</p>
+                                </div>
+                            </a>
+                        )}
+                        <a href="/home">
+                            <div className="wrapping">
+                                <Dashboard/>
+                                <p>Dashboard</p>
+                            </div>
+                        </a>
+                       
+                        <a href="/productView">
+                            <div className="wrapping">
+                                <DriverAnalytics/>
+                                <p>Driver Analytics</p>
+                            </div>
+                        </a>
+                        <a href="/actionable">
+                            <div className="wrapping">
+                                <ActionableInsights/>
+                                <p>Actionable Insights</p>
+                            </div>
+                        </a>
+                        <a href="https://assets.batterypulse.echargeup.com/" target="_blank" rel="noreferrer">
+                            <div className="wrapping">
+                                <Favorites/>
+                                <p>Assets</p>
+                            </div>
+                        </a>
+                        
+                        {shouldShowAllNbfcTabs() && canViewVerification && (
+                            <a href="/verification" >
+                                <div className="wrapping">
+                                    <MdOutlineVerified style={{width: '24px', height: '24px', color: 'inherit'}}/>
+                                    <p>Verification</p>
+                                </div>
+                            </a>
+                        )}
+                        <a href="/users/myProfile">
+                            <div className="wrapping">
+                                <FaUsers style={{width: '22px', height: '22px', color: 'inherit'}}/>
+                                <p>Users</p>
+                            </div>
+                        </a>
+                    </>
                 )}
                
                 <div className=" ml-4 mt-24  relative bottom-4 ">
