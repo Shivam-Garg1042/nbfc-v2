@@ -11,6 +11,7 @@ import batteryControlFacade from './batteryControl.js';
 import productDescFacade from './productDesc.js';
 import verificationFacade from './verification.js';
 import creditsFacade from './credits.js';
+import userFacade from './user.js';
 
 const router = express.Router();
 
@@ -27,6 +28,7 @@ router.use('/battery-control', batteryControlFacade);
 router.use('/product-desc', productDescFacade);
 router.use('/verification', verificationFacade);
 router.use('/credits', creditsFacade);
+router.use('/user', userFacade);
 
 
 // Health check

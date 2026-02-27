@@ -37,6 +37,7 @@ const CreateUser = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    password: '',
     organization: defaultOrganization,
     role: 'employee',
     verificationAccess: 'yes'
@@ -100,8 +101,8 @@ const CreateUser = () => {
       return;
     }
 
-    if (!formData.name.trim() || !formData.email.trim()) {
-      setStatusMessage('Name and email are required.');
+    if (!formData.name.trim() || !formData.email.trim() || !formData.password.trim()) {
+      setStatusMessage('Name, email, and password are required.');
       setIsSuccess(false);
       return;
     }
@@ -112,6 +113,7 @@ const CreateUser = () => {
       const response = await ApiService.createUser({
         name: formData.name.trim(),
         email: formData.email.trim(),
+        password: formData.password.trim(),
         organization: formData.organization,
         role: formData.role,
         verificationAccess: formData.verificationAccess === 'yes'
@@ -123,14 +125,16 @@ const CreateUser = () => {
         setFormData((prev) => ({
           ...prev,
           name: '',
-          email: ''
+          email: '',
+          password: ''
         }));
       } else {
         setStatusMessage(response.error || 'Unable to create user.');
         setIsSuccess(false);
       }
     } catch (error) {
-      setStatusMessage('Connect backend to create users.');
+      const apiError = error?.data?.error;
+      setStatusMessage(apiError || 'Connect backend to create users.');
       setIsSuccess(false);
     } finally {
       setIsSubmitting(false);
@@ -172,6 +176,17 @@ const CreateUser = () => {
                   type="email"
                   placeholder="Enter email"
                   value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-row">
+                <label htmlFor="password">Password:</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Enter password"
+                  value={formData.password}
                   onChange={handleChange}
                 />
               </div>

@@ -26,6 +26,7 @@ export default async function loginController({ email, password }, response) {
         email: res.email,
         role: res.role,
         organization: res.organization,
+        verificationAccess: res.verificationAccess !== false,
       };
       const secret = process.env.JWT_SECRET || process.env.JWT_SECRET_KEY;
 

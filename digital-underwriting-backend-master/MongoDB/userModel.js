@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
     required: true 
   },
   organization: String,
+  verificationAccess: {
+    type: Boolean,
+    default: true,
+  },
   credits: {
     type: Number,
     default: 2000,

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UsersShell from './UsersShell';
 import ApiService from '../../services/api';
+import { useAuth } from '../../contexts/AuthContext';
 
 const ROLE_TABS = [
   { key: 'all', label: 'All' },
@@ -10,12 +11,14 @@ const ROLE_TABS = [
 ];
 
 const AllUsers = () => {
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [activeRole, setActiveRole] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isDeleting, setIsDeleting] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -47,6 +50,19 @@ const AllUsers = () => {
     };
   }, []);
 
+  const roleTabs = useMemo(() => {
+    if (user?.role === 'nbfc') {
+      return ROLE_TABS.filter((tab) => tab.key !== 'admin');
+    }
+    return ROLE_TABS;
+  }, [user?.role]);
+
+  useEffect(() => {
+    if (user?.role === 'nbfc' && activeRole === 'admin') {
+      setActiveRole('all');
+    }
+  }, [activeRole, user?.role]);
+
   const filteredUsers = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
 
@@ -73,7 +89,7 @@ const AllUsers = () => {
       {errorMessage ? <div className="users-banner">{errorMessage}</div> : null}
       <div className="users-toolbar">
         <div className="users-tabs">
-          {ROLE_TABS.map((tab) => (
+          {roleTabs.map((tab) => (
             <button
               key={tab.key}
               type="button"
@@ -109,7 +125,8 @@ const AllUsers = () => {
               <th>Organization</th>
               <th>Role</th>
               <th>Batteries</th>
-              <th>Version</th>
+              
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -125,12 +142,32 @@ const AllUsers = () => {
                 <td>{user.organization || '-'}</td>
                 <td>{user.role || '-'}</td>
                 <td>{user.batteries ?? 0}</td>
+                
                 <td>
-                  <span
-                    className={`status-pill ${(user.version || 'lite').toLowerCase()}`}
+                  <button
+                    type="button"
+                    className="users-secondary-btn"
+                    onClick={async (event) => {
+                      event.stopPropagation();
+                      if (!window.confirm('Delete this user?')) {
+                        return;
+                      }
+                      try {
+                        setIsDeleting(user.userId || user.email);
+                        setErrorMessage('');
+                        await ApiService.deleteUser(user.userId || user.email);
+                        setUsers((prev) => prev.filter((item) => (item.userId || item.email) !== (user.userId || user.email)));
+                      } catch (error) {
+                        const apiError = error?.data?.error || 'Unable to delete user.';
+                        setErrorMessage(apiError);
+                      } finally {
+                        setIsDeleting(null);
+                      }
+                    }}
+                    disabled={isDeleting === (user.userId || user.email)}
                   >
-                    {(user.version || 'Lite').toUpperCase()}
-                  </span>
+                    {isDeleting === (user.userId || user.email) ? 'Deleting...' : 'Delete'}
+                  </button>
                 </td>
               </tr>
             ))}

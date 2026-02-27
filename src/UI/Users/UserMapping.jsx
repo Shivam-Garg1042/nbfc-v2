@@ -4,8 +4,6 @@ import ApiService from '../../services/api';
 import { useAuth } from '../../contexts/AuthContext';
 import UsersShell from './UsersShell';
 
-const STORAGE_KEY_PREFIX = 'user-driver-mapping:';
-
 const UserMapping = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -15,24 +13,37 @@ const UserMapping = () => {
   const [selectedDrivers, setSelectedDrivers] = useState([]);
   const [selectedIds, setSelectedIds] = useState(new Set());
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
 
-  const storageKey = `${STORAGE_KEY_PREFIX}${userId}`;
-
   useEffect(() => {
-    const saved = localStorage.getItem(storageKey);
-    if (saved) {
+    let isMounted = true;
+
+    const fetchMapping = async () => {
+      if (!userId) {
+        return;
+      }
+
       try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          setSelectedDrivers(parsed);
-          setSelectedIds(new Set(parsed.map((item) => item.driverId)));
+        const response = await ApiService.getUserDriverMapping(userId);
+        const ids = response?.data?.driverIds || [];
+        if (isMounted) {
+          setSelectedIds(new Set(ids));
+          setSelectedDrivers(ids.map((id) => ({ driverId: id })));
         }
       } catch (error) {
-        setStatusMessage('Saved mapping could not be loaded.');
+        if (isMounted) {
+          setStatusMessage('Saved mapping could not be loaded.');
+        }
       }
-    }
-  }, [storageKey]);
+    };
+
+    fetchMapping();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [userId]);
 
   useEffect(() => {
     let isMounted = true;
@@ -106,9 +117,18 @@ const UserMapping = () => {
     });
   };
 
-  const handleSubmit = () => {
-    localStorage.setItem(storageKey, JSON.stringify(selectedDrivers));
-    setStatusMessage('Driver mapping saved locally.');
+  const handleSubmit = async () => {
+    try {
+      setIsSaving(true);
+      setStatusMessage('');
+      const driverIds = Array.from(selectedIds);
+      await ApiService.saveUserDriverMapping(userId, driverIds);
+      setStatusMessage('Driver mapping saved successfully.');
+    } catch (error) {
+      setStatusMessage('Unable to save driver mapping.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -190,8 +210,8 @@ const UserMapping = () => {
               </div>
             </div>
           </div>
-          <button type="button" className="mapping-submit" onClick={handleSubmit}>
-            Submit
+          <button type="button" className="mapping-submit" onClick={handleSubmit} disabled={isSaving}>
+            {isSaving ? 'Saving...' : 'Submit'}
           </button>
         </div>
       </div>

@@ -295,6 +295,23 @@ class ApiService {
     });
   }
 
+  deleteUser(userId) {
+    return this.request(`/api/user/${encodeURIComponent(userId)}`, {
+      method: 'DELETE',
+    });
+  }
+
+  getUserDriverMapping(userId) {
+    return this.request(`/api/user/${encodeURIComponent(userId)}/driver-mapping`);
+  }
+
+  saveUserDriverMapping(userId, driverIds) {
+    return this.request(`/api/user/${encodeURIComponent(userId)}/driver-mapping`, {
+      method: 'POST',
+      body: JSON.stringify({ driverIds }),
+    });
+  }
+
 }
 
 export default new ApiService();

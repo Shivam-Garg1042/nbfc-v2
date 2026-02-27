@@ -5,12 +5,12 @@ import CustomError from "../customError.js";
 function isAuthenticatedController(token) {
   try {
     // 1. Verify the JWT, if expired or manipulated.
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const payload = jwt.verify(token, process.env.JWT_SECRET || process.env.JWT_SECRET_KEY);
 
     if (!payload) throw new CustomError("Unauthenticated", 403);
 
     // 2. Check if the user exists or not.
-    const userExist = userModel.find({ email: payload.email });
+    const userExist = userModel.findOne({ email: payload.email });
     if (!userExist) throw new CustomError("User does not exist", 403);
 
     return { status: 200, message: "User is authenticated and still exist.", payload };

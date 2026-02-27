@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
       });
     }
     
-    const user = await userModel.findOne({ email }).select('credits');
+    const user = await userModel.findOne({ email }).select('credits verificationAccess');
 
     // Login successful
     res.json({
@@ -42,6 +42,7 @@ router.post('/login', async (req, res) => {
         organization: loginResult.data.organization,
         email: loginResult.data.email,
         credits: user?.credits ?? 0,
+        verificationAccess: user?.verificationAccess !== false,
       }
     });
   } catch (error) {
@@ -69,9 +70,9 @@ router.get('/me', async (req, res) => {
 
     // Verify JWT token
     const jwt = await import('jsonwebtoken');
-    const payload = jwt.default.verify(token, process.env.JWT_SECRET);
-    
-    const user = await userModel.findOne({ email: payload.email }).select('credits');
+    const payload = jwt.default.verify(token, process.env.JWT_SECRET || process.env.JWT_SECRET_KEY);
+
+    const user = await userModel.findOne({ email: payload.email }).select('credits verificationAccess');
 
     res.json({
       success: true,
@@ -81,6 +82,7 @@ router.get('/me', async (req, res) => {
         organization: payload.organization,
         email: payload.email,
         credits: user?.credits ?? 0,
+        verificationAccess: user?.verificationAccess !== false,
       }
     });
   } catch (error) {

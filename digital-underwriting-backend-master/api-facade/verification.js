@@ -1,8 +1,33 @@
 import express from 'express';
 import { resolvers } from '../SchemaResolvers/ParentFolder-SRs/Parent-SR.js';
-import { chargeCredits, CREDIT_COSTS } from '../Helper/creditUtils.js';
+import { chargeCredits, CREDIT_COSTS, getAuthPayload } from '../Helper/creditUtils.js';
+import userModel from '../MongoDB/userModel.js';
 
 const router = express.Router();
+
+const checkVerificationAccess = async (req) => {
+  const payload = getAuthPayload(req);
+
+  if (!payload?.email) {
+    return { ok: false, status: 401, error: 'Authentication required' };
+  }
+
+  const permissions = payload?.role?.permissions || [];
+  if (!permissions.includes('verification')) {
+    return { ok: false, status: 403, error: 'Verification access denied' };
+  }
+
+  const user = await userModel.findOne({ email: payload.email }).select('verificationAccess');
+  if (!user) {
+    return { ok: false, status: 404, error: 'User not found' };
+  }
+
+  if (user.verificationAccess === false) {
+    return { ok: false, status: 403, error: 'Verification access disabled' };
+  }
+
+  return { ok: true, status: 200, user };
+};
 
 // Risk score verification endpoint
 router.post('/risk', async (req, res) => {
@@ -13,6 +38,15 @@ router.post('/risk', async (req, res) => {
       return res.status(400).json({
         success: false,
         error: 'Name and phone number are required'
+      });
+    }
+
+    const accessCheck = await checkVerificationAccess(req);
+    if (!accessCheck.ok) {
+      return res.status(accessCheck.status).json({
+        success: false,
+        error: accessCheck.error,
+        errorCode: accessCheck.status,
       });
     }
 
@@ -146,6 +180,15 @@ router.post('/vehicle', async (req, res) => {
       });
     }
 
+    const accessCheck = await checkVerificationAccess(req);
+    if (!accessCheck.ok) {
+      return res.status(accessCheck.status).json({
+        success: false,
+        error: accessCheck.error,
+        errorCode: accessCheck.status,
+      });
+    }
+
     const creditCheck = await chargeCredits({
       req,
       action: 'vehicle',
@@ -251,6 +294,15 @@ router.post('/credit', async (req, res) => {
       return res.status(400).json({
         success: false,
         error: 'First name, last name, mobile, and PAN are required'
+      });
+    }
+
+    const accessCheck = await checkVerificationAccess(req);
+    if (!accessCheck.ok) {
+      return res.status(accessCheck.status).json({
+        success: false,
+        error: accessCheck.error,
+        errorCode: accessCheck.status,
       });
     }
 

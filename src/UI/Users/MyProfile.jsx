@@ -34,7 +34,7 @@ const MyProfile = () => {
               <span className="profile-value">{user?.role || '-'}</span>
             </div>
             <div className="profile-item">
-              <span className="profile-label">Batteries</span>
+              <span className="profile-label">Users</span>
               <span className="profile-value">{batteries}</span>
             </div>
             <div className="profile-item">
